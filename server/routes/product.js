@@ -22,13 +22,15 @@ module.exports = function (mongoose, app) {
         .sort(JSON.parse(req.query.sort))
         .limit(parseInt(req.query.limit))
         .exec((err, products) => {
-          Product.count({ category_id: req.params.id }).exec((err, count) => {
-            return res.json({
-              total: count,
-              products: products,
-              category: category,
-            });
-          });
+          Product.countDocuments({ category_id: req.params.id }).exec(
+            (err, count) => {
+              return res.json({
+                total: count,
+                products: products,
+                category: category,
+              });
+            }
+          );
         });
     });
   });

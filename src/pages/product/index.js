@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Link from '@material-ui/core/Link';
+import { Link as RouterLink } from 'react-router-dom';
 import { useLocation, useParams } from 'react-router-dom';
 import api from '../../utils/api';
 import { makeStyles } from '@material-ui/core/styles';
@@ -88,10 +89,14 @@ const MyBreadcrumbs = (props) => {
 
   return (
     <Breadcrumbs aria-label="breadcrumb" className={className} {...other}>
-      <Link color="inherit" href="/">
+      <Link component={RouterLink} color="inherit" to="/">
         Home
       </Link>
-      <Link color="inherit" href={`/category/${category.category_id}`}>
+      <Link
+        component={RouterLink}
+        color="inherit"
+        to={`/category/${category.category_id}`}
+      >
         {category.name}
       </Link>
       <Typography color="textPrimary">{product.name}</Typography>
