@@ -10,7 +10,7 @@ import { Typography } from '@material-ui/core';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import Divider from '@material-ui/core/Divider';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import api from '../utils/api';
 
@@ -81,7 +81,8 @@ const CategoriesList = ({ isMobile }) => {
             <ListItem
               button
               key={item._id}
-              component={Link}
+              component={NavLink}
+              activeClassName="Mui-selected"
               to={`/category/${item.category_id}`}
             >
               <ListItemText primary={item.name} />
